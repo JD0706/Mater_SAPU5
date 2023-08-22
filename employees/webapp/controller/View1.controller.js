@@ -13,11 +13,14 @@ sap.ui.define([
             var valueEmployee = inputEmployee.getValue();
             if (valueEmployee.length === 6){
                    inputEmployee.setDescription("Ok");
-                  
+                   this.byId("labelCountry").setVisible(true)
+                   this.byId("slCountry").setVisible(true)
                 }else{
                    inputEmployee.setDescription("Not Ok")
-                  
-            }
+                   this.byId("labelCountry").setVisible(false)
+                   this.byId("slCountry").setVisible(false)
+               }
+       
         }
         return Controller.extend("logaligroup.employees.controller.View1", {
             onInit: function () {
