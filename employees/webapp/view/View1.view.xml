@@ -1,0 +1,10 @@
+<mvc:View controllerName="logaligroup.employees.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+         <Label id="labelEmployee" text="{i18n>labelEmployee}"  class="sapUiTinyMargin" />
+          <Input id="inputEmployee"  value="{jsonCountries>/employeeId}" maxLength="6" width= "200px" class="sapUiSmallMarginEnd" liveChange="onValidate"/><!---liveChange="onValidate"t-->
+        </content>
+    </Page>
+</mvc:View>
