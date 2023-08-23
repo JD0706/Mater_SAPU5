@@ -12,11 +12,11 @@ sap.ui.define([
             var inputEmployee = this.byId("inputEmployee");
             var valueEmployee = inputEmployee.getValue();
             if (valueEmployee.length === 6){
-                   inputEmployee.setDescription("Ok");
+            //       inputEmployee.setDescription("Ok");
                    this.byId("labelCountry").setVisible(true)
                    this.byId("slCountry").setVisible(true)
                 }else{
-                   inputEmployee.setDescription("Not Ok")
+             //      inputEmployee.setDescription("Not Ok")
                    this.byId("labelCountry").setVisible(false)
                    this.byId("slCountry").setVisible(false)
                }
@@ -27,7 +27,7 @@ sap.ui.define([
                 var oJSONModel = new sap.ui.model.json.JSONModel();
                 var oView = this.getView();
                 var i18nBundle = oView.getModel("i18n").getResourceBundle();
-                var oJSON = {
+             /*   var oJSON = {
                     employeeId : "123456",
                     countryKey: "UK",
                     listCountry: [
@@ -45,8 +45,8 @@ sap.ui.define([
                       }      
                      
     
-                    ] };
-                    oJSONModel.setData(oJSON);
+                    ] }; */
+                    oJSONModel.loadData("./localServices/mockdata/Employees.json",false);
                     oView.setModel(oJSONModel);
 
             },
