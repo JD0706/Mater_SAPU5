@@ -49,7 +49,7 @@
          </Column>
           </columns>
                 <items>
-                  <ColumnListItem type="Active" press="showPostalCode" >
+                  <ColumnListItem type="Active" press="showOrders" >
                     <cells>
                       <Label text="{jsonEmployees>EmployeeID}"></Label>
                       <Label text="{jsonEmployees>lastName}"></Label>
@@ -64,6 +64,8 @@
              
              </Panel>
           
+          </HBox>
+          <HBox id="ordersTable">
           </HBox>
        </content>
     </Page>
