@@ -7,6 +7,7 @@ sap.ui.define([
     function (Controller) {
         "use strict";
 
+
         function onValidate(oEvent){
            
             var inputEmployee = this.byId("inputEmployee");
@@ -22,6 +23,25 @@ sap.ui.define([
                }
        
         }
+
+        function onFilter(){
+          var oJson = this.getView().getModel().getData();
+          var filters = [];
+          if(oJson.employeeId !== ""){
+            filters.push(new sap.ui.model.Filter("EmployeeID", "EQ" ,oJson.employeeId))
+        }
+          if(oJson.countryKey !== ""){
+            filters.push(new sap.ui.model.Filter("Country", "EQ" ,oJson.countryKey))
+        }
+        var oTable =this.getView().byId("tableEmployee");
+        var oBinding = oTable.getBinding("items")
+        oBinding.filter(filters);
+       }
+       function  onClearFilter() {
+        var oModel = this.getView().getModel();
+        oModel.setProperty("/employeeId","")
+        oModel.setProperty("/countryKey","")
+       } 
         return Controller.extend("logaligroup.employees.controller.View1", {
             onAfterRendering: function () {
                 var oJSONModel = new sap.ui.model.json.JSONModel();
@@ -51,6 +71,8 @@ sap.ui.define([
 
             },
 
-            onValidate:onValidate
+            onValidate:onValidate,
+            onFilter:onFilter,
+            onClearFilter:onClearFilter
         });
     });
