@@ -42,6 +42,15 @@ sap.ui.define([
         oModel.setProperty("/employeeId","")
         oModel.setProperty("/countryKey","")
        } 
+
+       function  showPostalCode(oEvent){
+        var itemPressed = oEvent.getSource();
+        var context = itemPressed.getBindingContext();
+        var object  =  context.getObject() ;
+        sap.m.MessageToast.show(object.PostalCode);
+
+         }
+
         return Controller.extend("logaligroup.employees.controller.View1", {
             onAfterRendering: function () {
                 var oJSONModel = new sap.ui.model.json.JSONModel();
@@ -73,6 +82,7 @@ sap.ui.define([
 
             onValidate:onValidate,
             onFilter:onFilter,
-            onClearFilter:onClearFilter
+            onClearFilter:onClearFilter,
+            showPostalCode:showPostalCode
         });
     });
