@@ -45,7 +45,7 @@ sap.ui.define([
 
        function  showPostalCode(oEvent){
         var itemPressed = oEvent.getSource();
-        var context = itemPressed.getBindingContext();
+        var context = itemPressed.getBindingContext("jsonEmployeesclear");
         var object  =  context.getObject() ;
         sap.m.MessageToast.show(object.PostalCode);
 
