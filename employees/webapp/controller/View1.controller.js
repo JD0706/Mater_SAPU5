@@ -23,9 +23,34 @@ sap.ui.define([
        
         }
         return Controller.extend("logaligroup.employees.controller.View1", {
-            onInit: function () {
+            onAfterRendering: function () {
+                var oJSONModel = new sap.ui.model.json.JSONModel();
+                var oView = this.getView();
+                var i18nBundle = oView.getModel("i18n").getResourceBundle();
+                var oJSON = {
+                    employeeId : "123456",
+                    countryKey: "UK",
+                    listCountry: [
+                      {
+                        key:"US",
+                        text:i18nBundle.getText("countryUS")
+                      },
+                      {
+                        key:"UK",
+                        text:i18nBundle.getText("countryUS")
+                      },
+                      {
+                        key:"ES",
+                        text:i18nBundle.getText("countryUS")
+                      }      
+                     
+    
+                    ] };
+                    oJSONModel.setData(oJSON);
+                    oView.setModel(oJSONModel);
 
             },
+
             onValidate:onValidate
         });
     });

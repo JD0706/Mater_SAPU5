@@ -5,14 +5,12 @@
     <Page id="page" title="{i18n>title}">
          <content>
          <Label id="labelEmployee" text="{i18n>labelEmployee}"  class="sapUiTinyMargin" />
-         <Input id="inputEmployee"   maxLength="6" width= "200px" class="sapUiSmallMarginEnd" liveChange="onValidate"  /><!---liveChange="onValidate"t-->
+         <Input id="inputEmployee"  value="{/employeeId}" maxLength="6" width= "200px" class="sapUiSmallMarginEnd" liveChange="onValidate"  /><!---liveChange="onValidate"t-->
          <Label id="labelCountry" text="{i18n>labelCountry}" class="sapUiTinyMargin" visible="false"></Label>
-           <Select id="slCountry" forceSelection="false" visible="false">
+           <Select id="slCountry" selectedKey="{/countryKey}"  items="{/listCountry}"   forceSelection="false" visible="false">
              <items>
-                <core:Item key="US"  text="{i18n>US}" />
-                <core:Item key="UK"  text="{i18n>UK}" />
-                <core:Item key="US"  text="{i18n>ES}" />
-             </items>
+                <core:Item key="{key}"  text="{text}" />
+              </items>
            </Select>
        </content>
     </Page>
