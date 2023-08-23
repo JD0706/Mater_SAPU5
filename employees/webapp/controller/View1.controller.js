@@ -50,6 +50,19 @@ sap.ui.define([
         sap.m.MessageToast.show(object.PostalCode);
 
          }
+         function onshowCity(oEvent){
+          var oJsonModelConfig=this.getView().getModel("jsonModelConfig")
+          oJsonModelConfig.setProperty("/visibleCity",true);
+          oJsonModelConfig.setProperty("/visibleBtnShowCity",false);
+          oJsonModelConfig.setProperty("/visibleBtnHideCity",true);
+       }
+
+       function onHideCity(oEvent){
+        var oJsonModelConfig=this.getView().getModel("jsonModelConfig")
+        oJsonModelConfig.setProperty("/visibleCity",false);
+        oJsonModelConfig.setProperty("/visibleBtnShowCity",true);
+        oJsonModelConfig.setProperty("/visibleBtnHideCity",false);
+     }
 
         return Controller.extend("logaligroup.employees.controller.View1", {
             onAfterRendering: function () {
@@ -67,6 +80,22 @@ sap.ui.define([
                 var oJSONModelCountries = new sap.ui.model.json.JSONModel();
                 oJSONModelCountries.loadData("./localService/mockdata/Countries.json",false);
                 oView.setModel(oJSONModelCountries,"jsonCountries");
+
+                var oJsonModelConfig = new sap.ui.model.json.JSONModel({
+
+                  visibleID :true,
+                  visibleName :true,
+                  visibleCity :false,
+                  visibleBtnShowCity :true,
+                  visibleBtnHideCity :false
+                  
+     
+                })
+                oView.setModel(oJsonModelConfig,"jsonModelConfig");
+     
+                var oJsonModelLayout = new sap.ui.model.json.JSONModel();
+                oJsonModelLayout.loadData("./localService/mockdata/Layout.json",false);
+                oView.setModel(oJsonModelLayout,"jsonModelLayout");
      
 
             },
@@ -74,6 +103,9 @@ sap.ui.define([
             onValidate:onValidate,
             onFilter:onFilter,
             onClearFilter:onClearFilter,
-            showPostalCode:showPostalCode
+            showPostalCode:showPostalCode,
+            onshowCity:onshowCity,
+            onHideCity:onHideCity
+
         });
     });

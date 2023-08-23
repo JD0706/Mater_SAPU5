@@ -18,22 +18,36 @@
           </HBox>
           <HBox >
              <Panel >
+              <Button id="btnShowCity" text="{i18n>showCity}" visible="{jsonModelConfig>/visibleBtnShowCity}" press = "onshowCity"/>
+              <Button id="btnHideCity" text="{i18n>HideCity}" visible="{jsonModelConfig>/visibleBtnHideCity}" press = "onHideCity"/>
                <Table id="tableEmployee" items="{jsonEmployees>/}" >
-                <columns>
-                   <Column >
-                     <Label text="{i18n>tableId}" />
-                   </Column>
-                    <Column >
-                     <Label text="{i18n>tableName}" />
-                   </Column>
-                    <Column >
-                     <Label text="{i18n>tableCountry}" />
-                   </Column>
-                    <Column >
-                     <Label text="{i18n>tableCity}" />
-                   </Column>
-
-                </columns>
+               <columns>
+         <Column  visible ="{jsonModelConfig>/visibleID}">
+          <header>
+            <Label text="{i18n>tableid}"/>
+          </header>
+         </Column >
+         <Column visible ="{jsonModelConfig>/visibleName}" >
+          <header>
+            <Label text="{i18n>tableName}"/>
+          </header>
+         </Column >
+         <Column >
+          <header>
+            <Label text="{i18n>tableCountry}"/>
+          </header>
+         </Column>
+         <Column visible ="{jsonModelConfig>/visibleCity}">
+          <header>
+            <Label text="{i18n>tabeCity}"/>
+          </header>
+         </Column>
+         <Column width="100px" >
+         <header>
+               <Label text= "{i18n>tableShowDetails}"></Label>
+           </header>
+         </Column>
+          </columns>
                 <items>
                   <ColumnListItem type="Active" press="showPostalCode" >
                     <cells>
