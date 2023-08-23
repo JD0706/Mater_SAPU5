@@ -1,21 +1,4 @@
-{
-    "employeeId":"1234",
-    "countryKey": "",
-    "listCountry" :[
-        {
-         "key": "US",
-        "text": "Unates States"   
-        },
-        {
-            "key": "UK",
-            "text": "United Kindon"   
-         },
-         {
-            "key": "ES",
-            "text": "Spain"  
-         }
-    ],
-    "employees": [
+ [
         {
         "EmployeeID": "1",
         "LastName": "García Lopez",
@@ -121,5 +104,4 @@
                 }
                 ]
                 }
-                ]
-}
+               ]

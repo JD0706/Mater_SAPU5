@@ -6,11 +6,11 @@
        <content>
          <HBox >
             <Label id="labelEmployee" text="{i18n>labelEmployee}"  class="sapUiTinyMargin" />
-            <Input id="inputEmployee"  value="{/employeeId}" maxLength="6" width= "200px" class="sapUiSmallMarginEnd"  /><!---liveChange="onValidate"t-->
+            <Input id="inputEmployee"  value="{jsonCountries>/employeeId}" maxLength="6" width= "200px" class="sapUiSmallMarginEnd"  /><!---liveChange="onValidate"t-->
             <Label id="labelCountry" text="{i18n>labelCountry}" class="sapUiTinyMargin" ></Label>
-                <Select id="slCountry" selectedKey="{/countryKey}"  items="{/listCountry}"   forceSelection="false" >
+                <Select id="slCountry" selectedKey="{jsonCountries>/countryKey}"  items="{jsonCountries>/listCountry}"   forceSelection="false" >
                   <items>
-                    <core:Item key="{key}"  text="{text}" />
+                    <core:Item key="{jsonCountries>key}"  text="{jsonCountries>text}" />
                   </items>
                 </Select>
                   <Button id="btnFilter" text="{i18n>btnFilter}" icon="sap-icon://search" press="onFilter" class = "sapUiSmallMarginMarginEnd"></Button>
@@ -18,7 +18,7 @@
           </HBox>
           <HBox >
              <Panel >
-               <Table id="tableEmployee" items="{/employees}" >
+               <Table id="tableEmployee" items="{jsonEmployees>/}" >
                 <columns>
                    <Column >
                      <Label text="{i18n>tableId}" />
@@ -37,10 +37,10 @@
                 <items>
                   <ColumnListItem type="Active" press="showPostalCode" >
                     <cells>
-                      <Label text="{EmployeeID}"></Label>
-                      <Label text="{lastName}"></Label>
-                      <Label text="{Country}"></Label>
-                      <Label text="{City}"></Label>
+                      <Label text="{jsonEmployees>EmployeeID}"></Label>
+                      <Label text="{jsonEmployees>lastName}"></Label>
+                      <Label text="{jsonEmployees>Country}"></Label>
+                      <Label text="{jsonEmployees>City}"></Label>
                     </cells>
                   </ColumnListItem>
                 </items>

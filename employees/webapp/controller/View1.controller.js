@@ -25,7 +25,7 @@ sap.ui.define([
         }
 
         function onFilter(){
-          var oJson = this.getView().getModel().getData();
+          var oJson = this.getView().getModel("jsonCountries").getData();
           var filters = [];
           if(oJson.employeeId !== ""){
             filters.push(new sap.ui.model.Filter("EmployeeID", "EQ" ,oJson.employeeId))
@@ -38,7 +38,7 @@ sap.ui.define([
         oBinding.filter(filters);
        }
        function  onClearFilter() {
-        var oModel = this.getView().getModel();
+        var oModel = this.getView().getModel("jsonCountries");
         oModel.setProperty("/employeeId","")
         oModel.setProperty("/countryKey","")
        } 
@@ -53,30 +53,21 @@ sap.ui.define([
 
         return Controller.extend("logaligroup.employees.controller.View1", {
             onAfterRendering: function () {
-                var oJSONModel = new sap.ui.model.json.JSONModel();
-                var oView = this.getView();
-                var i18nBundle = oView.getModel("i18n").getResourceBundle();
-             /*   var oJSON = {
-                    employeeId : "123456",
-                    countryKey: "UK",
-                    listCountry: [
-                      {
-                        key:"US",
-                        text:i18nBundle.getText("countryUS")
-                      },
-                      {
-                        key:"UK",
-                        text:i18nBundle.getText("countryUS")
-                      },
-                      {
-                        key:"ES",
-                        text:i18nBundle.getText("countryUS")
-                      }      
-                     
-    
-                    ] }; */
-                    oJSONModel.loadData("./localServices/mockdata/Employees.json",false);
-                    oView.setModel(oJSONModel);
+              var oView = this.getView();
+        
+              var i18nBundle = oView.getModel("i18n").getResourceBundle();
+            
+     
+            
+              var oJSONModel = new sap.ui.model.json.JSONModel();
+                oJSONModel.loadData("./localService/mockdata/Employees.json",false);
+                oView.setModel(oJSONModel,"jsonEmployees");
+     
+     
+                var oJSONModelCountries = new sap.ui.model.json.JSONModel();
+                oJSONModelCountries.loadData("./localService/mockdata/Countries.json",false);
+                oView.setModel(oJSONModelCountries,"jsonCountries");
+     
 
             },
 
