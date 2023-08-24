@@ -178,11 +178,18 @@ sap.ui.define([
 
       this.oDialogOrders.close(); 
 
+     
+    }
 
+    function showEmployee(oEvent){
+      var path = oEvent.getSource().getBindingContext("jsonEmployees").getPath();
+      this._bus.publish("flexible","showEmployees",path)
     }
 
         return Controller.extend("logaligroup.employees.controller.MasterEmployee", {
-          
+          onInit : function(){
+            this._bus = sap.ui.getCore().getEventBus();
+          },
 
             onValidate:onValidate,
             onFilter:onFilter,
@@ -192,7 +199,9 @@ sap.ui.define([
             onHideCity:onHideCity,
             showOrders:showOrders,
             showOrdersDialog:showOrdersDialog,
-            onCloseOrders
+            onCloseOrders,
+            showEmployee
+
 
         });
     });

@@ -4,6 +4,13 @@ sap.ui.define(
     ],
     function(BaseController) {
       "use strict";
+      function showEmployeeDetails(category,nameEvent,path){
+        var detailView = this.getView().byId("detailEmployeeView")
+        detailView.bindElement("jsonEmployees>" + path);
+        this.getView().getModel("jsonModelLayout").setProperty("/ActiveKey","TwoColumnsBeginExpanded")   
+ 
+       }
+       
   
       return BaseController.extend("logaligroup.employees.controller.App", {
         onAfterRendering: function () {
@@ -37,9 +44,14 @@ sap.ui.define(
             var oJsonModelLayout = new sap.ui.model.json.JSONModel();
             oJsonModelLayout.loadData("./localService/mockdata/Layout.json",false);
             oView.setModel(oJsonModelLayout,"jsonModelLayout");
- 
 
-        }
+            this._bus = sap.ui.getCore().getEventBus();
+            this._bus.subscribe("flexible","showEmployees",this.showEmployeeDetails,this)
+
+       
+
+        },
+        showEmployeeDetails:showEmployeeDetails
       });
     }
   );
