@@ -42,7 +42,7 @@
             <Label text="{i18n>tabeCity}"/>
           </header>
          </Column>
-        
+         
           </columns>
                 <items>
                   <ColumnListItem type="Active" press="showOrders" >
@@ -56,13 +56,12 @@
                 </items>
                
                </Table>
+               <HBox id="ordersTable">
+               </HBox>
              
-             
-             </Panel>
+           </Panel>
           
-          </HBox>
-          <HBox id="ordersTable">
-          </HBox>
-       </content>
+           </HBox>
+          </content>
     </Page>
 </mvc:View>
