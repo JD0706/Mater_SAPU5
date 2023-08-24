@@ -42,17 +42,13 @@
             <Label text="{i18n>tabeCity}"/>
           </header>
          </Column>
-         <Column width="100px" >
-         <header>
-               <Label text= "{i18n>tableShowDetails}"></Label>
-           </header>
-         </Column>
+        
           </columns>
                 <items>
                   <ColumnListItem type="Active" press="showOrders" >
                     <cells>
                       <Label text="{jsonEmployees>EmployeeID}"></Label>
-                      <Label text="{jsonEmployees>lastName}"></Label>
+                      <Label text="{jsonEmployees>LastName}"></Label>
                       <Label text="{jsonEmployees>Country}"></Label>
                       <Label text="{jsonEmployees>City}"></Label>
                     </cells>
