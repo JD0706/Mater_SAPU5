@@ -13,8 +13,8 @@ sap.ui.define([
     //Crear el onjeto en el modelo
       var incidenceModel=this.getView().getModel("incidenceModel");
       var odata = incidenceModel.getData();
-      var index =odata.length;
-      odata.push({index :index + 1}) ;
+      var index = odata.length;
+      odata.push({index : index + 1}) ;
       incidenceModel.refresh();
     //la Relacion entre estos
         newIncidence.bindElement("incidenceModel>/" + index) ;
@@ -32,7 +32,7 @@ sap.ui.define([
   //Eliminar Datos
     var odata = incidenceModel.getData();
     var contextObj = rowIndice.getBindingContext("incidenceModel").getObject();
-     odata.splice(contextObj.index -1 , 1);
+     odata.splice(contextObj.index-1 , 1);
      for(var i in odata){
       odata[i].index = parseInt(i) + 1;
      }
@@ -41,7 +41,7 @@ sap.ui.define([
   //Eliminar Objeto visual
  tableIncidence.removeContent(rowIndice)
  for (var j in tableIncidence.getContent()){
-  tableIncidence.getContent()[j].bindElement("incidenceModel>/" + j)
+     tableIncidence.getContent()[j].bindElement("incidenceModel>/" + j)
 
     }
   }
